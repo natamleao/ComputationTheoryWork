@@ -1,6 +1,6 @@
-from State import State
+from state import State
 
-class AFD: #AFD = (Q, Σ, δ, q0, F)
+class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
     def __init__(self, new_initial_q_state: State, new_word: str, band_size: int):
         self.initial_q_state = new_initial_q_state
         self.word = new_word

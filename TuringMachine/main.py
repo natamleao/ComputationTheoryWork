@@ -2,9 +2,8 @@
 #import threading
 #import readchar
 from collections import defaultdict
-from State import State
-from AFD import AFD 
-import sys
+from state import State
+from turing_machine import TuringMachine 
      
 def read_input(arquivo):
     
@@ -55,7 +54,7 @@ def read_input(arquivo):
                 direction
             )
 
-    turing_machine = AFD(states[initial_state], band, band_size)
+    turing_machine = TuringMachine(states[initial_state], band, band_size)
     turing_machine.run()
 
 if __name__ == '__main__':
