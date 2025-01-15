@@ -38,7 +38,9 @@ class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
             current_symbol = self.band[self.current]
             transition = self.initial_q_state.transition(current_symbol)
             
-            print(f'Estado: {self.initial_q_state.state_name}, Cabeçote: {self.current}, Fita: {self.band}')
+            copy = self.band.copy()
+            copy[self.current] = f"->{copy[self.current]}"
+            print(f'Estado: {self.initial_q_state.state_name}, Cabeçote: {self.current}, Fita: {copy}')
 
             if not transition:
                 if self.initial_q_state.is_final:
@@ -77,5 +79,5 @@ class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
             
         self.current = band_size + 1
         
-        #print(f'{self.band}\nLEN: {len(self.band)}\nMAX: {2 * band_size}')
-        #print(f'current -> {self.band[self.current]}')
+        print(f'{self.band}\nLEN: {len(self.band)}\nMAX: {2 * band_size}')
+        print(f'current -> {self.band[self.current]}')
