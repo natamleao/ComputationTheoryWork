@@ -39,15 +39,11 @@ class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
             transition = self.initial_q_state.transition(current_symbol)
             
             copy = self.band.copy()
-            copy[self.current] = f"->{copy[self.current]}"
+            copy[self.current] = f'->{copy[self.current]}'
             print(f'Estado: {self.initial_q_state.state_name}, Cabeçote: {self.current}, Fita: {copy}')
-
+            
             if not transition:
-                if self.initial_q_state.is_final:
-                    return self.print_result()
-                else:
-                    print(f'{current_symbol} nao pertence ao alfabeto ou nao possui transicao!!')
-                    return False
+                return self.print_result()
 
             self.band[self.current] = transition.edge.write_symbol
             self.initial_q_state = transition.q_state
@@ -71,7 +67,6 @@ class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
 
     #Ideia para Turing Machine abaixo:
     def set_band(self, band_size: int):
-        #self.band = ['#'] + ['-'] * (2 * band_size)
         self.band = ['_'] * (2 * band_size)
                 
         for i, character in enumerate(self.word):
