@@ -63,9 +63,9 @@ class TuringMachineGUI(tk.Tk):
             if not self.turing_machine.run_step(): 
                 self.running = False
                 if self.turing_machine.print_result():
-                    resultado = 'Palavra aceita!'
+                    resultado = 'Palavra reconhecida!'
                 else:
-                    resultado = 'Palavra não aceita.'
+                    resultado = 'Palavra não reconhecida.'
                     
                 messagebox.showinfo('Resultado', resultado) 
                 self.botao_iniciar.config(state=tk.NORMAL)
