@@ -1,4 +1,4 @@
-from state import State
+from src.state import State
 
 class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
     def __init__(self, new_initial_q_state: State, new_word: str, band_size: int):

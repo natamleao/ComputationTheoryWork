@@ -1,13 +1,10 @@
-# .\.venv\Scripts\python.exe -m pip install readchar
-#import threading
-#import readchar
 from collections import defaultdict
-from state import State
-from turing_machine import TuringMachine 
-from turing_machine_gui import TuringMachineGUI
+from src.state import State
+from src.turing_machine import TuringMachine 
+from src.turing_machine_gui import TuringMachineGUI
      
 def turing_machine_create():
-    _file = '../fonte.mt' 
+    _file = './fonte.mt' 
     
     with open(_file, 'r') as file:
         lines = file.readlines()
