@@ -76,4 +76,4 @@ class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
             
         self.current = band_size + 1
         
-        print(f'{self.band}\nLEN: {len(self.band)}\nMAX: {2 * band_size}')
+        print(f'{self.band}\n')
