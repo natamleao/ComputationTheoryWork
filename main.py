@@ -14,7 +14,7 @@ def turing_machine_create():
     band = ''
     initial_state = None
     accept_state = None
-    band_size = 15
+    band_size = 40
 
     for line in lines:
         line = line.strip()
