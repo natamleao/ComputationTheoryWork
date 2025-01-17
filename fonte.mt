@@ -5,22 +5,22 @@
 #
 #tape 1011 -> 1100
 #tape 110 -> 111
-tape 1111 -> 10000
+#tape 1111 -> 10000
 #tape 10001 -> 10010
 #tape 0 -> 1
 #tape 1110 -> 1111
 #tape 101010 -> 101011
 #
-init right
-accept done
-
-right, 1, right, 1, >
-right, 0, right, 0, >
-right, _, carry, _, <
-
-carry, 1, carry, 0, <
-carry, 0, done, 1, <
-carry, _, done, 1, <
+#init right
+#accept done
+#
+#right, 1, right, 1, >
+#right, 0, right, 0, >
+#right, _, carry, _, <
+#
+#carry, 1, carry, 0, <
+#carry, 0, done, 1, <
+#carry, _, done, 1, <
 
 # Exemplo 02: binário divisível por 3.
 # Descrição: verifica se um número binário é divisível por 3.
