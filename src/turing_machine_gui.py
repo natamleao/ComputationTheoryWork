@@ -55,10 +55,10 @@ class TuringMachineGUI(tk.Tk):
         if self.running:
             current_state = self.turing_machine.initial_q_state.state_name
             current_tape = ''.join(self.turing_machine.tape)
-            cabeca_posicao = self.turing_machine.current
+            head_position = self.turing_machine.current
             self.state_display.config(text=f'Estado Atual: {current_state}')
             self.tape_display.config(text=current_tape)
-            self.head_display.config(text=f'Posição do Cabeçote: {cabeca_posicao}')
+            self.head_display.config(text=f'Posição do Cabeçote: {head_position}')
 
             if not self.turing_machine.run_step(): 
                 self.running = False
