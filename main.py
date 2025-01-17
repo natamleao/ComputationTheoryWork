@@ -11,10 +11,10 @@ def turing_machine_create():
     
     states = {}
     transitions = defaultdict(list)
-    band = ''
+    tape = ''
     initial_state = None
     accept_state = None
-    band_size = 40
+    tape_size = 15
 
     for line in lines:
         line = line.strip()
@@ -22,8 +22,8 @@ def turing_machine_create():
         if line.startswith('#') or line.startswith('@') or not line:
             continue
         
-        if line.startswith('band'):
-            band = line.split()[1] if len(line.split()) > 1 else None
+        if line.startswith('tape'):
+            tape = line.split()[1] if len(line.split()) > 1 else None
         elif line.startswith('init'):
             initial_state = line.split()[1]
         elif line.startswith('accept'):
@@ -56,7 +56,7 @@ def turing_machine_create():
                 direction
             )
     
-    turing_machine = TuringMachine(states[initial_state], band, band_size)
+    turing_machine = TuringMachine(states[initial_state], tape, tape_size)
     
     return turing_machine
 

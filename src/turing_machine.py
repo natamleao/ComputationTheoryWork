@@ -1,12 +1,12 @@
 from src.state import State
 
 class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
-    def __init__(self, new_initial_q_state: State, new_word: str, band_size: int):
+    def __init__(self, new_initial_q_state: State, new_word: str, tape_size: int):
         self.initial_q_state = new_initial_q_state
         self.word = new_word
  
         #Ideia para Turing Machine abaixo:        
-        self.set_band(band_size)
+        self.set_tape(tape_size)
     
     @property
     def initial_q_state(self): return self._initial_q_state
@@ -23,57 +23,57 @@ class TuringMachine: #AFD = (Q, Σ, δ, q0, F)
         self._word = new_word
         
     @property
-    def band(self): return self._band
+    def tape(self): return self._tape
     
-    @band.setter
-    def band(self, new_band: list = []):
-        self._band = new_band
+    @tape.setter
+    def tape(self, new_tape: list = []):
+        self._tape = new_tape
     
     #Ideia para Turing Machine abaixo:        
     def run_step(self):
         if self.initial_q_state is None or self.word is None: 
             return False
 
-        current_symbol = self.band[self.current]
+        current_symbol = self.tape[self.current]
         transition = self.initial_q_state.transition(current_symbol)
         
-        copy = self.band.copy()
+        copy = self.tape.copy()
         copy[self.current] = f'->{copy[self.current]}'
         print(f'Estado: {self.initial_q_state.state_name}, Cabeçote: {self.current}, Fita: {copy}')
         
         if not transition:
             return False
         
-        self.band[self.current] = transition.edge.write_symbol
+        self.tape[self.current] = transition.edge.write_symbol
         self.initial_q_state = transition.q_state
 
         if transition.edge.move_direction == '>':
             self.current += 1
-            if self.current >= len(self.band):
-                self.band.append(None)
+            if self.current >= len(self.tape):
+                self.tape.append(None)
         elif transition.edge.move_direction == '<':
             self.current -= 1
             if self.current < 0:
-                self.band.insert(0, None)
+                self.tape.insert(0, None)
                 self.current = 0
         
         return True
 
     def print_result(self):
         if self.initial_q_state.is_final:
-            print(f'reconheceu: {self.word}')
+            print(f'Aceitou: {self.word}')
             return True
         else:
-            print(f'Não reconheceu: {self.word}')
+            print(f'Não aceitou: {self.word}')
             return False
 
     #Ideia para Turing Machine abaixo:
-    def set_band(self, band_size: int):
-        self.band = ['_'] * (2 * band_size)
+    def set_tape(self, tape_size: int):
+        self.tape = ['_'] * (2 * tape_size)
                 
         for i, character in enumerate(self.word):
-            self.band[band_size + 1 + i] = character
+            self.tape[tape_size + 1 + i] = character
             
-        self.current = band_size + 1
+        self.current = tape_size + 1
         
-        print(f'{self.band}\n')
+        print(f'{self.tape}\nLEN: {len(self.tape)}\nMAX: {2 * tape_size}')
