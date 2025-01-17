@@ -43,7 +43,7 @@ def test_increment_binary_deve_passar():
         turing_machine = TuringMachine(state_right, word,12)
         while turing_machine.run_step(): 
             pass
-        result = list(filter(lambda x: x != '_',turing_machine.band))
+        result = list(filter(lambda x: x != '_',turing_machine.tape))
         word_sucess = ''
         for symbol in result:
             word_sucess += symbol
